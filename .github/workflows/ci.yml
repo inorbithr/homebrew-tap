@@ -1,0 +1,58 @@
+# Check the formula on macOS and Linux: style, a strict audit, then install it from the
+# release archives and run its test. `ci-ok` is the one required check.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  formula:
+    name: formula (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, ubuntu-24.04]
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@e99025eb970cfa124b8284a35463d87426917478 # 2026.09.28.1
+      - name: Check every formula
+        run: |
+          shopt -s nullglob
+          formulae=("$(brew --repository inorbithr/tap)"/Formula/*.rb)
+          if [ ${#formulae[@]} -eq 0 ]; then echo "no formula yet"; exit 0; fi
+          brew style inorbithr/tap
+          for f in "${formulae[@]}"; do
+            name="inorbithr/tap/$(basename "$f" .rb)"
+            brew audit --strict --online --formula "$name"
+            brew install --formula "$name"
+            brew test "$name"
+          done
+
+  ci-ok:
+    name: ci-ok
+    if: always()
+    needs: [formula]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          echo "results: $RESULTS"
+          for r in $RESULTS; do
+            case "$r" in success|skipped) ;; *) exit 1 ;; esac
+          done
