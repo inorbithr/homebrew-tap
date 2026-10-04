@@ -1,4 +1,4 @@
-# Written by inorbithr/sdk cli/release/formula.sh for iohr 0.1.0-alpha.4; regenerated on every
+# Written by inorbithr/sdk cli/release/formula.sh for iohr 0.1.0-alpha.5; regenerated on every
 # release, not edited by hand.
 class Iohr < Formula
   desc "InOrbit command-line tool: sign in, keep several accounts, call the API"
@@ -7,23 +7,23 @@ class Iohr < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.4/iohr-0.1.0-alpha.4-aarch64-apple-darwin.tar.gz"
-      sha256 "86bfe2ef00d18aeabaedcd617a8aa2b315ca07d2b4655639dedefb769a7775d5"
+      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.5/iohr-0.1.0-alpha.5-aarch64-apple-darwin.tar.gz"
+      sha256 "052a7f5ce92082ed90f2a342935b07e139058da7ef602f6b19b0099d7b6a8f34"
     end
     on_intel do
-      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.4/iohr-0.1.0-alpha.4-x86_64-apple-darwin.tar.gz"
-      sha256 "960807762244e2dfb448034ae3a58125fffa19ddda77ef592f82e689f6cc92e7"
+      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.5/iohr-0.1.0-alpha.5-x86_64-apple-darwin.tar.gz"
+      sha256 "f152b15f9bec38c16f9a42b3629d02fc2b6c77932a02cdb68bd11f2b86ff0df7"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.4/iohr-0.1.0-alpha.4-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "ed81295e292cc286b7624dcc309cc21a31270ab2a283caac57630198c9a6b084"
+      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.5/iohr-0.1.0-alpha.5-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "2cefdb08c74b8cfb2c6684365dc5ace20ca82323489166f7932804d60eaaec05"
     end
     on_intel do
-      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.4/iohr-0.1.0-alpha.4-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "1198d80f16485458c77bfeb207d39ad9348ab95a1933715ce0b75572f92fe145"
+      url "https://github.com/inorbithr/sdk/releases/download/iohr/v0.1.0-alpha.5/iohr-0.1.0-alpha.5-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "26b83ff2497ff8f19a4c2e74eb7cd2bf4668e760ca6b918db00923ba7ddfc6ff"
     end
   end
 
