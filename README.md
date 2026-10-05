@@ -23,3 +23,10 @@ Other ways to install (APT, winget, the shell and PowerShell installers) and the
 [inorbithr/sdk](https://github.com/inorbithr/sdk/tree/main/cli) and
 [docs.inorbit.hr](https://docs.inorbit.hr). Security reports:
 [SECURITY.md](https://github.com/inorbithr/sdk/blob/main/SECURITY.md).
+
+## Dependencies
+
+The workflow's actions stay on their latest releases, pinned by commit SHA. Dependabot
+checks them daily with a 7-day cooldown; patch and minor updates merge themselves once
+`ci-ok` passes (`.github/workflows/dependabot-automerge.yml`), majors wait for a
+maintainer.

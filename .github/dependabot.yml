@@ -1,0 +1,14 @@
+# The workflows' actions stay on their latest releases, pinned by SHA. Patch and minor
+# updates merge themselves once `ci-ok` passes (dependabot-automerge.yml); majors wait for
+# a maintainer. Never a version younger than the cooldown: a compromised release usually
+# surfaces within days. Security updates ignore the schedule and the cooldown.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: daily }
+    cooldown: { default-days: 7 }
+    groups:
+      actions: { patterns: ["*"], update-types: [minor, patch] }
+      actions-major: { patterns: ["*"], update-types: [major] }
+    commit-message: { prefix: "ci", include: scope }
