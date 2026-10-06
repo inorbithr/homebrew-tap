@@ -1,12 +1,4 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset=".github/assets/logo-light.svg">
-    <img alt="InOrbit Homebrew tap logo: a package with an amber dot" src=".github/assets/logo-light.svg" width="88" height="88">
-  </picture>
-</p>
-
-<h1 align="center">homebrew-tap</h1>
+<p align="center"><img alt="homebrew-tap: brew install inorbithr/tap/iohr in a terminal, verified by checksum, then iohr login" src=".github/assets/social-preview.png" width="100%"></p>
 
 <p align="center">Homebrew tap for iohr, the InOrbit command line: <code>brew install inorbithr/tap/iohr</code></p>
 
