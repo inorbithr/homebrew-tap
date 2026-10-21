@@ -26,6 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # The Linux entry stays GitHub-hosted: setup-homebrew needs to create /home/linuxbrew (root).
         os: [macos-15, ubuntu-24.04]
     steps:
       - uses: Homebrew/actions/setup-homebrew@e99025eb970cfa124b8284a35463d87426917478 # 2026.09.28.1
@@ -46,7 +47,7 @@ jobs:
     name: ci-ok
     if: always()
     needs: [formula]
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.CI_LIGHT_RUNNER || vars.LINUX_RUNNER || 'ubuntu-latest' }}
     permissions: {}
     steps:
       - env:
