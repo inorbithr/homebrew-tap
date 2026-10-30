@@ -1,0 +1,13 @@
+# Tasks for the checks CI runs (.github/workflows/ci.yml); CI's formula job uses Homebrew.
+[tools]
+# The formula syntax check needs it; Homebrew brings its own Ruby in CI.
+ruby = "3.4"
+
+[tasks."ci:changed"]
+description = "What CI checks without Homebrew or a network: every formula parses as Ruby (style, the online audit and the install test stay in CI). The coordinator's Checked gate runs it (RFC 0120). `--plan` prints the step without running it"
+usage = 'flag "--plan" help="print the step without running it"'
+shell = "bash -e -o pipefail -c"
+run = '''
+if [ -n "${usage_plan:-}" ]; then echo "ci:changed: syntax"; exit 0; fi
+ruby -c Formula/*.rb
+'''
