@@ -4,7 +4,10 @@
 ruby = "3.4"
 
 [tasks."ci:changed"]
-description = "What CI checks for the files changed since origin/main, without Homebrew or a network: every formula parses as Ruby (style, the online audit and the install test stay in CI). The coordinator's Checked gate runs it (RFC 0120). `--plan` prints the steps without running them"
-usage = 'flag "--plan" help="print the steps without running them"'
+description = "What CI checks without Homebrew or a network: every formula parses as Ruby (style, the online audit and the install test stay in CI). The coordinator's Checked gate runs it (RFC 0120). `--plan` prints the step without running it"
+usage = 'flag "--plan" help="print the step without running it"'
 shell = "bash -e -o pipefail -c"
-run = 'exec bash tools/ci-changed.sh ${usage_plan:+--plan}'
+run = '''
+if [ -n "${usage_plan:-}" ]; then echo "ci:changed: syntax"; exit 0; fi
+ruby -c Formula/*.rb
+'''
