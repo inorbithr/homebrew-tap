@@ -1,12 +1,16 @@
-<p align="center"><img alt="homebrew-tap: brew install inorbithr/tap/iohr in a terminal, verified by checksum, then iohr login" src=".github/assets/social-preview.png" width="100%"></p>
-
-<p align="center">Homebrew tap for iohr, the InOrbit command line: <code>brew install inorbithr/tap/iohr</code></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/hero-dark.png">
+    <img alt="homebrew-tap: brew install inorbithr/tap/iohr, the InOrbit command line for macOS and Linux" src=".github/assets/hero-light.png" width="100%">
+  </picture>
+</p>
 
 # InOrbit Homebrew tap
 
-`iohr`, the InOrbit command line, for macOS and Linux:
+The Homebrew tap for `iohr`, the InOrbit command line, on macOS and Linux:
 
 ```sh
+brew trust inorbithr/tap     # once per machine: Homebrew refuses a tap it was not told to trust
 brew install inorbithr/tap/iohr
 iohr login
 ```
@@ -21,7 +25,7 @@ gh attestation verify "$(brew --cache iohr)" --repo inorbithr/sdk
 
 `Formula/iohr.rb` is written by the SDK repository's release workflow
 (`tools/cli-formula.sh`) and arrives here as a pull request for each release; it is not
-edited by hand. Releases before 1.0 are pre-releases.
+edited by hand. `iohr` is a pre-release until 1.0.
 
 Other ways to install (APT, winget, the shell and PowerShell installers) and the source:
 [inorbithr/sdk](https://github.com/inorbithr/sdk/tree/main/cli) and
